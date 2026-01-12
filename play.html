@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play | OCEClans</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.bunny.net/css?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Fixes for Overlapping */
+        .mainflex {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: auto !important; /* Prevents container from cutting off content */
+            min-height: 100vh;
+        }
+        .main1 {
+            height: auto !important; /* Allows section to grow with content */
+            padding-bottom: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        /* Fix for the Info Table Overlapping */
+        .main3_join_div {
+            height: auto !important;
+            padding: 40px !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .main3_join_content_div {
+            height: auto !important;
+            display: flex !important;
+            justify-content: center !important;
+            gap: 50px !important;
+            margin-top: 20px;
+        }
+        /* Ensuring button doesn't overlap footer */
+        .main1_info_button_div {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <nav class="desktop_navbar">
+      <a href="index.html"><img class="desktop_navbar_logo_img" src="logo_small.png" alt="logo"></a>
+      <a href="index.html#wiki" class="desktop_navbar_link">Wiki</a>
+      <a href="index.html#discord" class="desktop_navbar_link">Community</a>
+      <div class="desktop_navbar_link2_div">
+          <a href="index.html" class="desktop_navbar_link2">Back Home</a>
+      </div>
+    </nav>
+
+    <div class="mainflex">
+      <div class="main1">
+        <a class="main1_logo_a" href="index.html">
+          <img class="main1_logo" src="logo.png" alt="logo">
+        </a>
+        <div class="main1_description">
+          <a>Connect to</a>
+          <a class="main1_actcent">OCEClans</a><a>.</a>
+        </div>
+
+        <div class="main1_ipcopier_div">
+          <button class="main1_ipcopier" onclick="copyText()" type="button">
+            <span class="main1_ipcopier_text1">play.oceclans.com</span>
+            <br>
+            <span class="main1_ipcopier_text2">Click to copy</span>
+          </button>
+        </div>
+
+        <div class="main3">
+            <div class="main3_join_div_div">
+              <div class="main3_join_div">
+                <a class="main3_join_title">Server Status</a>
+                <div class="main3_join_content_div">
+                  <div class="main3_join_categories" style="text-align: right; line-height: 2.5;">
+                    <a>IP Address</a>
+                    <a>Port</a>
+                    <a>Version</a>
+                    <a>Players</a>
+                  </div>
+                  <div class="main3_join_values" style="text-align: left; line-height: 2.5;">
+                    <a class="main1_actcent">play.oceclans.com</a>
+                    <a>25565</a>
+                    <a>1.21.x</a>
+                    <a id="player-count">Loading...</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="main1_info_button_div">
+            <a href="https://discord.gg/WbkATGHuZz" style="
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 300px;
+                height: 60px;
+                text-decoration: none;
+            ">
+                <img src="button.png" alt="" style="position: absolute; width: 100%; height: 100%; z-index: 1;">
+                <span style="position: relative; z-index: 2; color: white; font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; text-transform: uppercase; font-weight: bold;">Discord</span>
+            </a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="copyright_div">
+      <a href="" class="copyright">Made for Hauntd, Made by Glaze. (c) 2026</a>
+    </footer>
+
+    <script>
+        // Copy Script
+        function copyText() {
+            navigator.clipboard.writeText("play.oceclans.com");
+        }
+        $(document).ready(function() {
+          $('.main1_ipcopier').click(function() {
+            var popup = $('<div>', { class: 'main1_popup' }).append($('<h3 class="copy_confirm">').text('Copied!'))
+            $(this).after(popup);
+            setTimeout(function() { popup.remove(); }, 1000);
+          });
+        });
+
+        // Live Player Count
+        async function updateStats() {
+            try {
+                const res = await fetch('https://api.mcstatus.io/v2/status/java/play.oceclans.com');
+                const data = await res.json();
+                if (data.online) {
+                    document.getElementById('player-count').innerText = data.players.online + " / " + data.players.max;
+                } else {
+                    document.getElementById('player-count').innerText = "Offline";
+                }
+            } catch (e) {
+                document.getElementById('player-count').innerText = "Error";
+            }
+        }
+        updateStats();
+    </script>
+</body>
+</html>
