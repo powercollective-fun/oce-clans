@@ -41,7 +41,7 @@
             } else {
                 x.style.display = "flex";
             }
-            } 
+            }
         </script>
     </div>
 
@@ -78,6 +78,39 @@
           </script>
         </div>
 
+        <div class="main1_info_button_div" style="margin-top: 25px; display: flex; justify-content: center;">
+            <a href="information.html" style="
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 300px;  /* Wide width */
+                height: 60px;  /* Short height */
+                text-decoration: none;
+                transition: transform 0.2s;
+            ">
+                <img src="button.png" alt="" style="
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 1;
+                    border-radius: 5px; /* Optional: smooth corners if image allows */
+                ">
+                
+                <span style="
+                    position: relative;
+                    z-index: 2;
+                    color: white; /* Change color if your button is light */
+                    font-family: 'Space Grotesk', sans-serif;
+                    font-size: 1.5rem;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    font-weight: bold;
+                ">Information</span>
+            </a>
+        </div>
         <a href="#more" class="scroll">
           <img alt="downarrow" class="main1_downarrow" src="downarrow.png">
         </a>
