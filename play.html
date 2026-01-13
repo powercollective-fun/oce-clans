@@ -7,147 +7,115 @@
     <title>Play | OCEClans</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.bunny.net/css?family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        body { background-color: #212529; color: white; margin: 0; font-family: 'Space Grotesk', sans-serif; }
-        
-        /* Layout Fixes */
+        /* Fixes for Overlapping */
         .mainflex {
             display: flex;
             flex-direction: column;
+            align-items: center;
+            height: auto !important; /* Prevents container from cutting off content */
             min-height: 100vh;
         }
-
         .main1 {
-            flex: 1;
+            height: auto !important; /* Allows section to grow with content */
+            padding-bottom: 100px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 6rem 20px;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://imgur.com/cGMLytH.png');
-            background-size: cover;
-            background-position: center;
         }
-
-        /* Server Status Box Styling */
-        .status_container {
-            width: 100%;
-            max-width: 600px;
-            margin-top: auto; /* Pushes to bottom */
-            margin-bottom: 40px;
-            background-color: #16191b;
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid #333;
-        }
-
-        .main3_join_content_div {
+        /* Fix for the Info Table Overlapping */
+        .main3_join_div {
+            height: auto !important;
+            padding: 40px !important;
             display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 15px;
+            flex-direction: column;
+            align-items: center;
         }
-
-        .main1_actcent { color: #02db02; font-weight: 800; }
-        
-        footer {
-            background-color: #000;
-            padding: 20px;
-            text-align: center;
-            width: 100%;
+        .main3_join_content_div {
+            height: auto !important;
+            display: flex !important;
+            justify-content: center !important;
+            gap: 50px !important;
+            margin-top: 20px;
         }
-
-        .copyright { color: #ffffff99; text-decoration: none; font-size: 0.9rem; }
+        /* Ensuring button doesn't overlap footer */
+        .main1_info_button_div {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            clear: both;
+        }
     </style>
 </head>
 <body>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <nav class="desktop_navbar">
-      <a href="index.html"><img class="desktop_navbar_logo_img" src="logo_small.png" alt="logo"></a>
-      <div class="desktop_navbar_link2_div" style="border-radius: 50px; background: rgba(5, 179, 5, 0.1); border: 1px solid #05b305; margin-left: auto; margin-right: 2rem;">
-          <a href="index.html" class="desktop_navbar_link2" style="padding: 10px 20px; display: block; color: white; text-decoration: none;">Back Home</a>
-      </div>
+<nav class="desktop_navbar">
+        <a href="index.html"><img class="desktop_navbar_logo_img" src="logo_small.png" alt="logo"></a>
+        <a href="play.html" class="desktop_navbar_link">Join Us</a> 
+        <a href="information.html" class="desktop_navbar_link">Information</a>
+        <div class="desktop_navbar_link2_div"></div>
     </nav>
 
     <div class="mainflex">
       <div class="main1">
-        <a class="main1_logo_a" href="index.html" style="margin-bottom: 3rem;">
-          <img class="main1_logo" src="logo.png" alt="logo" style="max-width: 30rem; width: 100%;">
+        <a class="main1_logo_a" href="index.html">
+          <img class="main1_logo" src="logo.png" alt="logo">
         </a>
-
-        <div class="main1_description" style="font-size: 3rem; text-align: center; margin-bottom: 2rem;">
-          <a>Connect to</a> <a class="main1_actcent">OCEClans</a>
+        <div class="main1_description">
+          <a>Connect to</a>
+          <a class="main1_actcent">OCEClans</a><a>.</a>
         </div>
 
         <div class="main1_ipcopier_div">
-          <button onclick="copyText()" type="button" 
-            style="padding: 1.2rem 3.5rem; 
-                   background-color: rgba(5, 179, 5, 0.15); 
-                   border: 2px solid #05b305; 
-                   border-radius: 100px; 
-                   color: white; 
-                   cursor: pointer; 
-                   transition: all 0.3s; 
-                   font-family: 'Space Grotesk', sans-serif;
-                   backdrop-filter: blur(8px);">
-            <span style="font-size: 2rem; font-weight: 800; display: block;">play.oceclans.com</span>
-            <span style="font-size: 1.2rem; opacity: 0.8;">Click to copy IP</span>
+          <button class="main1_ipcopier" onclick="copyText()" type="button">
+            <span class="main1_ipcopier_text1">play.oceclans.com</span>
+            <br>
+            <span class="main1_ipcopier_text2">Click to copy</span>
           </button>
         </div>
 
-        <div class="status_container">
-            <div style="text-align: center; font-size: 1.8rem; font-weight: 700; color: white;">Server Status</div>
-            <div class="main3_join_content_div">
-                <div style="text-align: right; line-height: 2; font-size: 1.2rem; color: #aaa;">
-                    <div>IP Address</div>
-                    <div>Port</div>
-                    <div>Version</div>
-                    <div>Players</div>
+        <div class="main3">
+            <div class="main3_join_div_div">
+              <div class="main3_join_div">
+                <a class="main3_join_title">Server Status</a>
+                <div class="main3_join_content_div">
+                  <div class="main3_join_categories" style="text-align: right; line-height: 2.5;">
+                    <a>IP Address</a>
+                    <a>Port</a>
+                    <a>Version</a>
+                    <a>Players</a>
+                  </div>
+                  <div class="main3_join_values" style="text-align: left; line-height: 2.5;">
+                    <a class="main1_actcent">play.oceclans.com</a>
+                    <a>25565</a>
+                    <a>1.21.x</a>
+                    <a id="player-count">Loading...</a>
+                  </div>
                 </div>
-                <div style="text-align: left; line-height: 2; font-size: 1.2rem; font-weight: 700;">
-                    <div class="main1_actcent">play.oceclans.com</div>
-                    <div>25565</div>
-                    <div>1.21.x</div>
-                    <div id="player-count">Loading...</div>
-                </div>
-            </div>
-
-            <div style="display: flex; justify-content: center; margin-top: 30px;">
-                <a href="https://discord.gg/WbkATGHuZz" style="
-                    display: inline-flex;
-                    justify-content: center;
-                    align-items: center;
-                    padding: 15px 50px;
-                    background-color: rgba(5, 179, 5, 0.15);
-                    border: 2px solid #05b305;
-                    border-radius: 100px;
-                    text-decoration: none;
-                    color: white;
-                    font-size: 1.2rem;
-                    text-transform: uppercase;
-                    font-weight: 800;
-                    transition: 0.3s;
-                    backdrop-filter: blur(8px);
-                ">
-                    Join Discord
-                </a>
+              </div>
             </div>
         </div>
-      </div>
-    </div>
+
 
     <footer class="copyright_div">
-      <a href="" class="copyright">Made for Hauntd, Made by Glaze. &copy; 2026</a>
+      <a href="" class="copyright">Made for Hauntd, Made by Glaze. (c) 2026</a>
     </footer>
 
     <script>
         // Copy Script
         function copyText() {
             navigator.clipboard.writeText("play.oceclans.com");
-            alert("IP Copied!");
         }
+        $(document).ready(function() {
+          $('.main1_ipcopier').click(function() {
+            var popup = $('<div>', { class: 'main1_popup' }).append($('<h3 class="copy_confirm">').text('Copied!'))
+            $(this).after(popup);
+            setTimeout(function() { popup.remove(); }, 1000);
+          });
+        });
 
         // Live Player Count
         async function updateStats() {
@@ -164,7 +132,6 @@
             }
         }
         updateStats();
-        setInterval(updateStats, 30000); // Update every 30 seconds
     </script>
 </body>
 </html>
