@@ -71,7 +71,7 @@
 
         <div class="main1_ipcopier_div">
           <button class="main1_ipcopier" onclick="copyText()" type="button">
-            <span class="main1_ipcopier_text1">play.oceclans.com</span>
+            <span class="main1_ipcopier_text1">oceclans.my.pebble.host</span>
             <br>
             <span class="main1_ipcopier_text2">Click to copy</span>
           </button>
@@ -89,7 +89,7 @@
                     <a>Players</a>
                   </div>
                   <div class="main3_join_values" style="text-align: left; line-height: 2.5;">
-                    <a class="main1_actcent">play.oceclans.com</a>
+                    <a class="main1_actcent">oceclans.my.pebble.host</a>
                     <a>25565</a>
                     <a>1.21.x</a>
                     <a id="player-count">Loading...</a>
@@ -107,7 +107,7 @@
     <script>
         // Copy Script
         function copyText() {
-            navigator.clipboard.writeText("play.oceclans.com");
+            navigator.clipboard.writeText("oceclans.my.pebble.host");
         }
         $(document).ready(function() {
           $('.main1_ipcopier').click(function() {
@@ -120,7 +120,7 @@
         // Live Player Count
         async function updateStats() {
             try {
-                const res = await fetch('https://api.mcstatus.io/v2/status/java/play.oceclans.com');
+                const res = await fetch('https://api.mcstatus.io/v2/status/java/oceclans.my.pebble.host');
                 const data = await res.json();
                 if (data.online) {
                     document.getElementById('player-count').innerText = data.players.online + " / " + data.players.max;
@@ -135,3 +135,4 @@
     </script>
 </body>
 </html>
+
